@@ -1,0 +1,18 @@
+body{
+	background-color: #a6a6a6;
+}
+.field{
+	width: 80%;
+	height: 900px;
+	margin: auto;
+	background-color: #368016;
+}
+.dealer{
+	margin: auto;
+}
+.player{
+	margin: auto;
+}
+.card{
+	width: 50px;
+}
