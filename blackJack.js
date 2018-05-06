@@ -1,3 +1,8 @@
+$(function(){
+var deck = new Card();
+var user = new Player();
+var dealer = new Player("dealer");
+
 class Card {
 	constructor(){
 		this._cards = []
@@ -65,11 +70,5 @@ class Player {
 var draw = function(player){
 	player.cards = deck.drawed();
 }
-
-var deck = new Card();
-var user = new Player();
-var dealer = new Player("dealer");
-
-$(function(){
 
 });
