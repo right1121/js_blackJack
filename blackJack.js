@@ -1,6 +1,3 @@
-var playerCards;
-var dealerCards;
-
 class Card {
 	constructor(){
 		this._cards = []
@@ -17,7 +14,6 @@ class Card {
 	draw(){
 		this._shuffle();
 		var card = this._cards[0];
-		console.log(card);
 		card = (card - 1)%13+1;
 
 		this._cards.shift();
@@ -34,9 +30,22 @@ class Card {
 	}
 }
 
+class Player {
+	constructor(name = player){
+		this._name = name;
+		this._cards.push(Card.draw());
+		this._cards.push(Card.draw());
+	}
+
+	get cards(){
+		return this._cards;
+	}
+}
+
 $(function(){
 	var cards = new Card();
-	console.log(cards.remaining);
-	console.log(cards.draw());
+	var user = new Player();
+	var dealer = new Player(dealer);
+
 	console.log(cards.remaining);
 });
