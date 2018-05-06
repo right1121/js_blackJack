@@ -31,8 +31,10 @@ class Card {
 }
 
 class Player {
-	constructor(name = player){
+	constructor(name){
+		if ( name === undefined ) name = 'player';
 		this._name = name;
+		//Rules to draw two cards first.
 		this._cards.push(Card.draw());
 		this._cards.push(Card.draw());
 	}
