@@ -28,26 +28,31 @@ class Card {
 	    this._cards[r] = tmp;
 		}
 	}
-}
+};
 
 class Player {
-	constructor(name){
+	constructor(cards,name){
 		if ( name === undefined ) name = 'player';
 		this._name = name;
 		//Rules to draw two cards first.
-		this._cards.push(Card.draw());
-		this._cards.push(Card.draw());
+		var card = [];
+		card.push(cards.draw());
+		card.push(cards.draw());
+		this._cards = card;
 	}
 
 	get cards(){
 		return this._cards;
 	}
-}
+};
+
+var start = function(){
+	var cards = new Card();
+	var user = new Player(cards);
+	var dealer = new Player(cards, "dealer");
+	console.log(user.cards);
+};
 
 $(function(){
-	var cards = new Card();
-	var user = new Player();
-	var dealer = new Player(dealer);
-
-	console.log(cards.remaining);
+	start();
 });
