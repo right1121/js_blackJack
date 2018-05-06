@@ -46,6 +46,7 @@ class Player {
 	set cards(card){
 		this._cards.push(card);
 		this.score = card;
+
 	}
 
 	get cards(){

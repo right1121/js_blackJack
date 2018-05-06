@@ -6,13 +6,29 @@ body{
 	height: 900px;
 	margin: auto;
 	background-color: #368016;
-}
-.dealer{
-	margin: auto;
+	position: relative;
 }
 .player{
-	margin: auto;
+	height: 270px;
+	margin: 0px 10% 0px;
+	padding: 0px;
+	position: absolute;
+	text-align: center;
+	display: inline-block;
+}
+.dealer{
+	top: 50px;
+}
+.user{
+	bottom: 50px;
 }
 .card{
-	width: 50px;
+	width: 180px;
+	height: 270px;
+	margin: auto;
+	background-color: #f0f0f0;
+	position: absolute;
+	display: inline-block;
+	text-align: left;
+	border: solid 1px #868686;
 }
