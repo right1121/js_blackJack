@@ -34,11 +34,11 @@ class Player {
 	constructor(name){
 		if ( name === undefined ) name = 'player';
 		this._name = name;
+		this._score = 0;
+		this._cards = [];
 		//Rules to draw two cards first.
-		var card = [];
-		card.push(deck.drawed());
-		card.push(deck.drawed());
-		this._cards = card;
+		this.cards = deck.drawed();
+		this.cards = deck.drawed();
 	}
 
 	set cards(card){
@@ -53,7 +53,11 @@ class Player {
 	set score(card){
 		var score;
 		score = card < 10 ? card : 10;
-		this._score = score;
+		this._score += score;
+	}
+
+	get score(){
+		return this._score;
 	}
 
 };
