@@ -34,19 +34,27 @@ class Card {
 
 class Player {
 	constructor(name){
-		if ( name === undefined ) name = 'player';
+		if ( name === undefined ) name = 'user';
 		this._name = name;
 		this._score = 0;
 		this._cards = [];
+
+		if(name == 'dealer'){
+			this._field = $('.dealer');
+		}else{
+			this._field = $('.user');
+		}
+
 		//Rules to draw two cards first.
 		this.cards = deck.drawed();
 		this.cards = deck.drawed();
+
 	}
 
 	set cards(card){
 		this._cards.push(card);
 		this.score = card;
-
+		$(this._field).append('<div class = "card" style = "left: ' + (this.cards.length - 1) * 50 + 'px">' + card + '</div>');
 	}
 
 	get cards(){
@@ -65,12 +73,16 @@ class Player {
 
 };
 
+deck = new Card();
+user = new Player();
+dealer = new Player("dealer");
+
+});
+
+var deck
+var user
+var dealer
+
 var draw = function(player){
 	player.cards = deck.drawed();
 }
-
-var deck = new Card();
-var user = new Player();
-var dealer = new Player("dealer");
-
-});
