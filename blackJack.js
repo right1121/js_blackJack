@@ -10,10 +10,21 @@ class Card {
 	}
 
 	get remaining(){
+		//残りのカード
 		return this._cards;
 	}
 
-	_shuffleCard(){
+	draw(){
+		this._shuffle();
+		var card = this._cards[0];
+		console.log(card);
+		card = (card - 1)%13+1;
+
+		this._cards.shift();
+		return card;
+	}
+
+	_shuffle(){
 		for(var i = this._cards.length - 1; i > 0; i--){
 	    var r = Math.floor(Math.random() * (i + 1));
 	    var tmp = this._cards[i];
@@ -25,5 +36,7 @@ class Card {
 
 $(function(){
 	var cards = new Card();
+	console.log(cards.remaining);
+	console.log(cards.draw());
 	console.log(cards.remaining);
 });
