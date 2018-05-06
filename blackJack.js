@@ -40,9 +40,9 @@ class Player {
 		this._cards = [];
 
 		if(name == 'dealer'){
-			this._field = $('.dealer');
+			this._field = $('div.dealer');
 		}else{
-			this._field = $('.user');
+			this._field = $('div.user');
 		}
 
 		//Rules to draw two cards first.
