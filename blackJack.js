@@ -11,7 +11,7 @@ class Card {
 		return this._cards;
 	}
 
-	draw(){
+	drawed(){
 		this._shuffle();
 		var card = this._cards[0];
 		card = (card - 1)%13+1;
@@ -31,33 +31,40 @@ class Card {
 };
 
 class Player {
-	constructor(cards,name){
+	constructor(name){
 		if ( name === undefined ) name = 'player';
 		this._name = name;
 		//Rules to draw two cards first.
 		var card = [];
-		card.push(cards.draw());
-		card.push(cards.draw());
+		card.push(deck.drawed());
+		card.push(deck.drawed());
 		this._cards = card;
+	}
+
+	set cards(card){
+		this._cards.push(card);
+		this.score = card;
 	}
 
 	get cards(){
 		return this._cards;
 	}
 
-	set cards(card){
-		this._cards.push(card);
+	set score(card){
+		var score;
+		score = card < 10 ? card : 10;
+		this._score = score;
 	}
 
 };
 
-var draw = function(player, cards){
-	player.cards = cards.draw();
+var draw = function(player){
+	player.cards = deck.drawed();
 }
 
-var cards = new Card();
-var user = new Player(cards);
-var dealer = new Player(cards, "dealer");
+var deck = new Card();
+var user = new Player();
+var dealer = new Player("dealer");
 
 $(function(){
 
