@@ -86,3 +86,8 @@ var dealer
 var draw = function(player){
 	player.cards = deck.drawed();
 }
+var dealerDraw = function(){
+	while(dealer.score < 17){
+		draw(dealer);
+	}
+}
