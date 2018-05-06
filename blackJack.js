@@ -44,14 +44,28 @@ class Player {
 	get cards(){
 		return this._cards;
 	}
+
+	set cards(card){
+		this._cards.push(card);
+	}
 };
 
 var start = function(){
-	var cards = new Card();
-	var user = new Player(cards);
-	var dealer = new Player(cards, "dealer");
+	cards = new Card();
+	user = new Player(cards);
+	dealer = new Player(cards, "dealer");
+
+	user.cards = cards.draw();
 	console.log(user.cards);
 };
+
+var draw = function(player, cards){
+
+}
+
+var cards;
+var user;
+var dealer;
 
 $(function(){
 	start();
