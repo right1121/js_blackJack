@@ -77,17 +77,26 @@ deck = new Card();
 user = new Player();
 dealer = new Player("dealer");
 
-});
-
-var deck
-var user
-var dealer
-
 var draw = function(player){
 	player.cards = deck.drawed();
 }
+
 var dealerDraw = function(){
 	while(dealer.score < 17){
 		draw(dealer);
 	}
 }
+
+$('#stand').on('click', function(){
+	draw(user);
+});
+
+$('div').on('click', '#hit' ,function(){
+	draw(dealer);
+});
+
+});
+
+var deck
+var user
+var dealer
