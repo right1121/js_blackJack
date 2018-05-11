@@ -1,3 +1,7 @@
+var deck
+var user
+var dealer
+
 $(function(){
 
 class Card {
@@ -39,16 +43,17 @@ class Player {
 		this._score = 0;
 		this._cards = [];
 
-		if(name == 'dealer'){
+		if ( name == 'dealer' ){
 			this._field = $('div.dealer');
+			this.cards = deck.drawed();
+			this.cards = deck.drawed();
+			$('.dealer > .card:last').text("");
 		}else{
 			this._field = $('div.user');
+			this.cards = deck.drawed();
+			this.cards = deck.drawed();
 		}
-
 		//Rules to draw two cards first.
-		this.cards = deck.drawed();
-		this.cards = deck.drawed();
-
 	}
 
 	set cards(card){
@@ -77,26 +82,22 @@ deck = new Card();
 user = new Player();
 dealer = new Player("dealer");
 
-var draw = function(player){
+var stand = function(player){
 	player.cards = deck.drawed();
 }
 
-var dealerDraw = function(){
+var hit = function(){
+	$('.dealer > .card:last').text(dealer.cards[1]);
 	while(dealer.score < 17){
-		draw(dealer);
+		stand(dealer);
 	}
 }
 
 $('#stand').on('click', function(){
-	draw(user);
+	stand(user);
 });
 
-$('div').on('click', '#hit' ,function(){
-	draw(dealer);
+$('.field').on('click', '#hit' ,function(){
+	hit();
 });
-
 });
-
-var deck
-var user
-var dealer
