@@ -50,3 +50,8 @@ p.dealer{
 p.user{
 	bottom: 100px;
 }
+p.game_over{
+	font-size: 50px;
+	display: inline-block;
+	text-align: center;
+}
