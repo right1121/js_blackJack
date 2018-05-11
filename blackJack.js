@@ -83,6 +83,10 @@ deck = new Card();
 user = new Player();
 dealer = new Player("dealer");
 
+var addRestart = function(){
+	$('.field').append('<input class="restart" type="button" name="" value="やり直す">');
+}
+
 var draw = function(player){
 	player.cards = deck.drawed();
 }
@@ -91,10 +95,9 @@ var stand = function(){
 	if (gameOngoing){
 		draw(user);
 		if (user.score > 21){
-			$('.field').append('<p class = "game_over">Game Over</p>');
-			$('.field').append('<input id="restart" type="button" name="" value="やり直す">');
+			$('.field').append('<p class = "game_over">You Loss</p>');
 			gameOngoing = false;
-
+			addRestart();
 		}
 	}
 }
@@ -109,15 +112,25 @@ var hit = function(){
 	}
 }
 
+var judge = function(){
+	if (user.score > dealer.score || dealer.score > 21){
+			$('.field').append('<p class = "game_over">You Win</p>');
+	}else{
+			$('.field').append('<p class = "game_over">You Loss</p>');
+	}
+	addRestart();
+}
+
 $('#stand').on('click', function(){
 	stand(user);
 });
 
 $('.field').on('click', '#hit' ,function(){
 	hit();
+	judge();
 });
 
-$('.field').on('click', '#restart' ,function(){
+$('.field').on('click', '.restart' ,function(){
 	location.reload();
 });
 
